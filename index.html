@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="LinguaBridge — Professional language coaching and translation services. Break language barriers with 50+ languages, certified translators, and corporate packages.">
+    <title>LinguaBridge | Language Coaching & Translation Service</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='45' stroke='%232563EB' stroke-width='2' stroke-opacity='0.5' fill='none'/%3E%3Cpath d='M42 35 L42 65 L60 65' stroke='%232563EB' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#2563EB', secondary: '#0F172A' } } } }</script>
+    <style>
+        /* ---- Extra page-specific styles ---- */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(37,99,235,0.07);
+            border: 1px solid rgba(37,99,235,0.18);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #2563EB;
+        }
+        .dark .hero-badge {
+            background: rgba(37,99,235,0.12);
+            border-color: rgba(96,165,250,0.25);
+            color: #60A5FA;
+        }
+
+        /* Animated gradient border card */
+        .glow-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .glow-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, #2563EB, #60A5FA, #1D4ED8, #93C5FD);
+            background-size: 300% 300%;
+            animation: gradBorder 6s ease infinite;
+            border-radius: 21px;
+            z-index: 0;
+        }
+        .glow-card-inner {
+            position: relative;
+            z-index: 1;
+            background: var(--surface);
+            border-radius: 19px;
+        }
+        @keyframes gradBorder {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Stat ticker */
+        .stat-pill {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow-base);
+            transition: var(--transition);
+        }
+        .stat-pill:hover {
+            border-color: rgba(37,99,235,0.3);
+            box-shadow: 0 8px 32px var(--shadow-blue);
+            transform: translateY(-3px);
+        }
+        .dark .stat-pill {
+            background: var(--surface-alt);
+        }
+
+        /* Hero visual card */
+        .hero-visual {
+            position: relative;
+        }
+        .floating-tag {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 14px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(37,99,235,0.15);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0F172A;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.12);
+            white-space: nowrap;
+        }
+        .dark .floating-tag {
+            background: rgba(17,24,39,0.90);
+            border-color: rgba(37,99,235,0.25);
+            color: #F1F5F9;
+        }
+
+        /* Language orbit animation */
+        @keyframes orbitX {
+            0%,100% { transform: translateX(0) translateY(0); }
+            25%      { transform: translateX(6px) translateY(-4px); }
+            50%      { transform: translateX(0) translateY(-8px); }
+            75%      { transform: translateX(-6px) translateY(-4px); }
+        }
+
+        /* Feature strip */
+        .feature-strip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .feature-strip i {
+            color: #10B981;
+            font-size: 0.75rem;
+        }
+
+        /* Language flag card */
+        .lang-card {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .lang-card:hover {
+            border-color: rgba(37,99,235,0.35);
+            box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+            transform: translateY(-5px);
+        }
+        .dark .lang-card {
+            background: var(--surface-alt);
+        }
+
+        /* Service card redesign */
+        .svc-card {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+        .svc-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 100px; height: 100px;
+            background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, 30px);
+            transition: var(--transition);
+        }
+        .svc-card:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-6px); box-shadow: 0 20px 60px var(--shadow-blue); }
+        .svc-card:hover::after { width: 150px; height: 150px; }
+        .dark .svc-card { background: var(--surface-alt); }
+
+        /* Process step */
+        .step-num {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2563EB, #1D4ED8);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+            flex-shrink: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Testimonial card */
+        .testi-card {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: var(--transition);
+        }
+        .testi-card:hover { border-color: rgba(37,99,235,0.25); transform: translateY(-4px); box-shadow: 0 16px 48px var(--shadow-base); }
+        .dark .testi-card { background: var(--surface-alt); }
+
+        /* Trust logo */
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            transition: var(--transition);
+        }
+        .trust-item:hover { border-color: rgba(37,99,235,0.3); }
+        .dark .trust-item { background: var(--surface-alt); }
+
+        /* Marquee */
+        .marquee-track {
+            display: flex;
+            gap: 12px;
+            animation: marqueeScroll 28s linear infinite;
+            width: max-content;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* CTA strip */
+        .cta-strip {
+            background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%);
+            border-radius: 28px;
+            padding: 56px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-strip::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .cta-strip::after {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            top: -150px; right: -100px;
+            border-radius: 50%;
+        }
+
+        /* Responsive hero visual */
+        @media (max-width: 1024px) {
+            .hero-right-panel { display: none !important; }
+        }
+    </style>
+</head>
+
+<body class="bg-[var(--cream)]">
+    <div id="navbar-container"></div>
+
+    <!-- ===== HERO — SPLIT LAYOUT ===== -->
+    <section class="relative overflow-hidden" style="background:var(--cream);min-height:92vh;display:flex;align-items:center;">
+        <!-- Subtle background -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div style="position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(37,99,235,0.06) 0%,transparent 65%);top:-300px;right:-200px;"></div>
+            <div style="position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(96,165,250,0.04) 0%,transparent 65%);bottom:-200px;left:-150px;"></div>
+            <!-- grid lines -->
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.03) 1px,transparent 1px);background-size:56px 56px;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 py-16 xl:py-24">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-20 items-center">
+
+                <!-- ── Left Content ── -->
+                <div class="text-center xl:text-left">
+                    <div class="hero-badge mb-6 mx-auto xl:mx-0 reveal">
+                        <span class="w-1.5 h-1.5 rounded-full" style="background:#2563EB;"></span>
+                        Professional Language Services
+                    </div>
+
+                    <h1 class="mb-6 reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,4.5rem);line-height:1.12;font-weight:800;color:var(--text-dark);animation-delay:0.08s;">
+                        We Speak<br>
+                        <span class="blue-text">Every Language</span><br>
+                        <em style="font-style:italic;font-weight:600;">Fluently.</em>
+                    </h1>
+
+                    <p class="text-[var(--text-muted)] text-lg leading-relaxed mb-8 max-w-lg mx-auto xl:mx-0 reveal" style="animation-delay:0.16s;">
+                        Certified document translation, live interpretation, and personalised language coaching — all in one place. Trusted by 5,000+ clients across 40 countries.
+                    </p>
+
+                    <!-- CTA row -->
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center xl:justify-start mb-10 reveal" style="animation-delay:0.24s;">
+                        <a href="contact.html" class="btn btn-primary btn-lg btn-shine">
+                            <i class="fas fa-paper-plane text-xs"></i> Get Free Quote
+                        </a>
+                        <a href="services.html" class="btn btn-secondary btn-lg">
+                            Explore Services <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Feature strip -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center xl:justify-start reveal" style="animation-delay:0.3s;">
+                        <span class="feature-strip"><i class="fas fa-check-circle"></i> ISO 17100 Certified</span>
+                        <span class="feature-strip"><i class="fas fa-check-circle"></i> 50+ Languages</span>
+                        <span class="feature-strip"><i class="fas fa-check-circle"></i> 24-hr Delivery</span>
+                        <span class="feature-strip"><i class="fas fa-check-circle"></i> NDA Protected</span>
+                    </div>
+
+                    <!-- Stat pills row -->
+                    <div class="flex flex-wrap gap-4 justify-center xl:justify-start mt-10 reveal" style="animation-delay:0.38s;">
+                        <div class="stat-pill">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));border:1px solid rgba(37,99,235,0.2);">
+                                <i class="fas fa-globe text-[#2563EB] text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-[#2563EB]" style="font-family:'Playfair Display',serif;" data-counter data-target="50" data-suffix="+">50+</div>
+                                <div class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-semibold">Languages</div>
+                            </div>
+                        </div>
+                        <div class="stat-pill">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));border:1px solid rgba(37,99,235,0.2);">
+                                <i class="fas fa-file-alt text-[#2563EB] text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-[#2563EB]" style="font-family:'Playfair Display',serif;" data-counter data-target="10" data-suffix="K+">10K+</div>
+                                <div class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-semibold">Translations</div>
+                            </div>
+                        </div>
+                        <div class="stat-pill">
+                            <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));border:1px solid rgba(37,99,235,0.2);">
+                                <i class="fas fa-star text-[#2563EB] text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-xl font-bold text-[#2563EB]" style="font-family:'Playfair Display',serif;" data-counter data-target="98" data-suffix="%">98%</div>
+                                <div class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider font-semibold">Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Right Visual Panel ── -->
+                <div class="hero-right-panel hero-visual flex items-center justify-center relative">
+
+                    <!-- Glow-bordered main card -->
+                    <div class="glow-card w-full max-w-sm mx-auto" style="animation:float 6s ease-in-out infinite;">
+                        <div class="glow-card-inner p-8 text-center">
+                            <!-- Quote illustration -->
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#2563EB,#1D4ED8);box-shadow:0 8px 32px rgba(37,99,235,0.3);">
+                                <i class="fas fa-language text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg mb-1" style="font-family:'Playfair Display',serif;">Instant Quote</h3>
+                            <p class="text-sm text-[var(--text-muted)] mb-5">Get a translation quote in under 2 hours</p>
+
+                            <!-- Mini form mock -->
+                            <div class="space-y-3 mb-5">
+                                <div class="flex items-center gap-3 p-3 rounded-xl text-sm text-left" style="background:var(--surface-alt);border:1px solid var(--border-light);">
+                                    <i class="fas fa-arrow-right text-[#2563EB] text-xs"></i>
+                                    <span class="text-[var(--text-muted)] flex-1">From: English</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 rounded-xl text-sm text-left" style="background:var(--surface-alt);border:1px solid var(--border-light);">
+                                    <i class="fas fa-arrow-right text-[#2563EB] text-xs"></i>
+                                    <span class="text-[var(--text-muted)] flex-1">To: Spanish</span>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 rounded-xl text-sm text-left" style="background:var(--surface-alt);border:1px solid var(--border-light);">
+                                    <i class="fas fa-file text-[#2563EB] text-xs"></i>
+                                    <span class="text-[var(--text-muted)] flex-1">Type: Legal Document</span>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="btn btn-primary btn-full btn-shine text-sm">
+                                Get Quote Now
+                            </a>
+
+                            <!-- Rating row -->
+                            <div class="flex items-center justify-center gap-2 mt-4 pt-4" style="border-top:1px solid var(--border-light);">
+                                <div class="flex gap-0.5">
+                                    <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                                    <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                                    <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                                    <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                                    <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                                </div>
+                                <span class="text-xs text-[var(--text-muted)] font-semibold">4.9/5 · 2,400 reviews</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating language tags -->
+                    <div class="floating-tag" style="top:-20px;left:-30px;animation:float 5s ease-in-out infinite;">
+                        🇪🇸 <span>Español</span>
+                    </div>
+                    <div class="floating-tag" style="top:60px;right:-40px;animation:float 7s ease-in-out infinite 1s;">
+                        🇫🇷 <span>Français</span>
+                    </div>
+                    <div class="floating-tag" style="bottom:80px;left:-40px;animation:float 6s ease-in-out infinite 2s;">
+                        🇯🇵 <span>日本語</span>
+                    </div>
+                    <div class="floating-tag" style="bottom:10px;right:-30px;animation:float 8s ease-in-out infinite 0.5s;">
+                        🇸🇦 <span>العربية</span>
+                    </div>
+                    <div class="floating-tag" style="top:160px;left:-50px;animation:float 5.5s ease-in-out infinite 3s;">
+                        🇨🇳 <span>中文</span>
+                    </div>
+                </div>
+
+            </div><!-- end grid -->
+        </div><!-- end container -->
+    </section><!-- end hero -->
+
+
+    <!-- ===== MARQUEE LANGUAGES ===== -->
+    <section class="py-10 overflow-hidden" style="background:var(--secondary);border-top:1px solid rgba(37,99,235,0.15);border-bottom:1px solid rgba(37,99,235,0.15);">
+        <div class="relative">
+            <div class="marquee-track">
+                <!-- repeated twice for seamless loop -->
+                <div class="flex gap-12 items-center shrink-0">
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇪🇸 Spanish</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇫🇷 French</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇩🇪 German</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇨🇳 Mandarin</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇯🇵 Japanese</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇸🇦 Arabic</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇮🇳 Hindi</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇵🇹 Portuguese</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇷🇺 Russian</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇰🇷 Korean</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇮🇹 Italian</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇳🇱 Dutch</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                </div>
+                <!-- duplicate for loop -->
+                <div class="flex gap-12 items-center shrink-0" aria-hidden="true">
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇪🇸 Spanish</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇫🇷 French</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇩🇪 German</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇨🇳 Mandarin</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇯🇵 Japanese</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇸🇦 Arabic</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇮🇳 Hindi</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇵🇹 Portuguese</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇷🇺 Russian</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇰🇷 Korean</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇮🇹 Italian</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                    <span class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] shrink-0">🇳🇱 Dutch</span>
+                    <span class="text-[#2563EB] text-lg shrink-0">·</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="py-24" style="background:var(--cream);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row gap-14 items-start">
+                <!-- Sticky intro column -->
+                <div class="lg:w-72 shrink-0 lg:sticky lg:top-28 text-center lg:text-left">
+                    <div class="section-tag mx-auto lg:mx-0 reveal"><i class="fas fa-cogs text-[10px]"></i> Services</div>
+                    <h2 class="section-title mt-3 reveal">What We <span class="blue-text">Do</span></h2>
+                    <p class="text-sm text-[var(--text-muted)] mb-6 reveal">End-to-end language solutions for individuals, businesses, and enterprises.</p>
+                    <a href="services.html" class="btn btn-primary btn-sm btn-shine reveal">View All Services</a>
+
+                    <!-- Extra content to fill left column -->
+                    <div class="mt-8 space-y-4 reveal">
+                        <!-- Mini stat block -->
+                        <div class="p-5 rounded-2xl text-left" style="background:var(--surface);border:1px solid var(--border-light);">
+                            <p class="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)] mb-4">By The Numbers</p>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-[var(--text-muted)]">Languages Covered</span>
+                                    <span class="text-sm font-bold text-[#2563EB]" style="font-family:'Playfair Display',serif;">50+</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:85%;"></div></div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-[var(--text-muted)]">On-Time Delivery</span>
+                                    <span class="text-sm font-bold text-[#2563EB]" style="font-family:'Playfair Display',serif;">99.5%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:99%;"></div></div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-[var(--text-muted)]">Client Satisfaction</span>
+                                    <span class="text-sm font-bold text-[#2563EB]" style="font-family:'Playfair Display',serif;">98%</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:98%;"></div></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Services grid -->
+                <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="svc-card reveal">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);">
+                            <i class="fas fa-file-alt text-[#2563EB]"></i>
+                        </div>
+                        <h3 class="text-base font-bold" style="font-family:'DM Sans',sans-serif;">Document Translation</h3>
+                        <p class="text-sm text-[var(--text-muted)] flex-1">Legal, medical, technical, and business documents translated with certified accuracy.</p>
+                        <a href="services.html" class="text-[#2563EB] text-xs font-bold uppercase tracking-wider hover:underline">Learn More →</a>
+                    </div>
+                    <div class="svc-card reveal">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);">
+                            <i class="fas fa-headset text-[#2563EB]"></i>
+                        </div>
+                        <h3 class="text-base font-bold" style="font-family:'DM Sans',sans-serif;">Live Interpretation</h3>
+                        <p class="text-sm text-[var(--text-muted)] flex-1">Real-time interpretation for conferences, court proceedings, and business meetings.</p>
+                        <a href="services.html" class="text-[#2563EB] text-xs font-bold uppercase tracking-wider hover:underline">Learn More →</a>
+                    </div>
+                    <div class="svc-card reveal">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);">
+                            <i class="fas fa-chalkboard-teacher text-[#2563EB]"></i>
+                        </div>
+                        <h3 class="text-base font-bold" style="font-family:'DM Sans',sans-serif;">Language Coaching</h3>
+                        <p class="text-sm text-[var(--text-muted)] flex-1">1-on-1 personalised coaching with native speakers at your own pace and schedule.</p>
+                        <a href="services.html" class="text-[#2563EB] text-xs font-bold uppercase tracking-wider hover:underline">Learn More →</a>
+                    </div>
+                    <div class="svc-card reveal">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);">
+                            <i class="fas fa-globe text-[#2563EB]"></i>
+                        </div>
+                        <h3 class="text-base font-bold" style="font-family:'DM Sans',sans-serif;">Website Localisation</h3>
+                        <p class="text-sm text-[var(--text-muted)] flex-1">Adapt your digital presence for global markets with culturally aware localisation.</p>
+                        <a href="services.html" class="text-[#2563EB] text-xs font-bold uppercase tracking-wider hover:underline">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="py-24" style="background:var(--surface-alt);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-route text-[10px]"></i> How It Works</div>
+                <h2 class="section-title reveal">Three Steps to <span class="blue-text">Clear Communication</span></h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Step 1 -->
+                <div class="flex items-start gap-6 p-8 rounded-2xl reveal" style="background:var(--surface);border:1px solid var(--border-light);">
+                    <div class="step-num">1</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg mb-1" style="font-family:'Playfair Display',serif;">Submit Your Request</h3>
+                        <p class="text-sm text-[var(--text-muted)]">Fill out our brief form — tell us your language pair, document type, and deadline. We'll respond with a detailed quote in under 2 hours, completely free.</p>
+                    </div>
+                    <div class="hidden sm:flex w-12 h-12 rounded-xl items-center justify-center shrink-0" style="background:rgba(37,99,235,0.05);border:1px solid rgba(37,99,235,0.12);">
+                        <i class="fas fa-paper-plane text-[#2563EB]"></i>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex items-start gap-6 p-8 rounded-2xl reveal" style="background:var(--surface);border:1px solid var(--border-light);">
+                    <div class="step-num">2</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg mb-1" style="font-family:'Playfair Display',serif;">Get Matched with an Expert</h3>
+                        <p class="text-sm text-[var(--text-muted)]">We assign a certified translator or coach with specialisation in your industry and language pair — from a vetted network of 200+ professionals.</p>
+                    </div>
+                    <div class="hidden sm:flex w-12 h-12 rounded-xl items-center justify-center shrink-0" style="background:rgba(37,99,235,0.05);border:1px solid rgba(37,99,235,0.12);">
+                        <i class="fas fa-user-check text-[#2563EB]"></i>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex items-start gap-6 p-8 rounded-2xl reveal" style="background:var(--surface);border:1px solid var(--border-light);">
+                    <div class="step-num">3</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg mb-1" style="font-family:'Playfair Display',serif;">Receive & Approve</h3>
+                        <p class="text-sm text-[var(--text-muted)]">Get your polished translation or coaching session delivered on time. Unlimited revisions included until you're 100% satisfied.</p>
+                    </div>
+                    <div class="hidden sm:flex w-12 h-12 rounded-xl items-center justify-center shrink-0" style="background:rgba(37,99,235,0.05);border:1px solid rgba(37,99,235,0.12);">
+                        <i class="fas fa-check-double text-[#2563EB]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="py-24" style="background:var(--cream);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-quote-left text-[10px]"></i> Client Stories</div>
+                <h2 class="section-title reveal">Trusted by <span class="blue-text">Thousands</span></h2>
+            </div>
+
+            <div class="grid-3">
+                <!-- Testi 1 -->
+                <div class="testi-card reveal">
+                    <div class="flex gap-1 mb-1">
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                    </div>
+                    <p class="text-sm text-[var(--text-muted)] italic leading-relaxed flex-1">"LinguaBridge translated our entire product catalogue into 8 languages with incredible accuracy. Their attention to cultural nuances set them apart from any service we've used before."</p>
+                    <div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border-light);">
+                        <div class="w-10 h-10 rounded-full overflow-hidden shrink-0" style="border:2px solid rgba(37,99,235,0.3);">
+                            <img src="assets/client_sarah.png" alt="Sarah Mitchell" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Sarah Mitchell</div>
+                            <div class="text-xs text-[var(--text-muted)]">VP Marketing, TechGlobal Inc.</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testi 2 -->
+                <div class="testi-card reveal">
+                    <div class="flex gap-1 mb-1">
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                    </div>
+                    <p class="text-sm text-[var(--text-muted)] italic leading-relaxed flex-1">"The live interpretation service was flawless during our international summit. Professional, punctual, and the interpreters had exceptional legal terminology knowledge."</p>
+                    <div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border-light);">
+                        <div class="w-10 h-10 rounded-full overflow-hidden shrink-0" style="border:2px solid rgba(37,99,235,0.3);">
+                            <img src="assets/client_robert.png" alt="Robert Kim" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Robert Kim</div>
+                            <div class="text-xs text-[var(--text-muted)]">Director, GlobalLaw Partners</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testi 3 -->
+                <div class="testi-card reveal">
+                    <div class="flex gap-1 mb-1">
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                        <i class="fas fa-star text-[#F59E0B] text-xs"></i>
+                    </div>
+                    <p class="text-sm text-[var(--text-muted)] italic leading-relaxed flex-1">"In just 3 months of coaching I went from beginner to conversational Japanese. The personalised approach and native-speaking coach made all the difference."</p>
+                    <div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border-light);">
+                        <div class="w-10 h-10 rounded-full overflow-hidden shrink-0" style="border:2px solid rgba(37,99,235,0.3);">
+                            <img src="assets/client_ana.png" alt="Ana López" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Ana López</div>
+                            <div class="text-xs text-[var(--text-muted)]">Entrepreneur</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRUST STRIP ===== -->
+    <section class="py-16" style="background:var(--surface-alt);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <p class="text-center text-xs text-[var(--text-muted)] uppercase tracking-[0.2em] font-bold mb-8 reveal">Recognised & Certified By</p>
+            <div class="flex flex-wrap items-center justify-center gap-4 reveal">
+                <div class="trust-item">
+                    <i class="fas fa-shield-halved text-[#2563EB] text-lg"></i>
+                    <span class="text-xs font-bold text-[var(--text-dark)] uppercase tracking-wider">ISO 17100</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-award text-[#2563EB] text-lg"></i>
+                    <span class="text-xs font-bold text-[var(--text-dark)] uppercase tracking-wider">ATA Member</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-certificate text-[#2563EB] text-lg"></i>
+                    <span class="text-xs font-bold text-[var(--text-dark)] uppercase tracking-wider">GALA Member</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-lock text-[#2563EB] text-lg"></i>
+                    <span class="text-xs font-bold text-[var(--text-dark)] uppercase tracking-wider">GDPR Compliant</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-file-contract text-[#2563EB] text-lg"></i>
+                    <span class="text-xs font-bold text-[var(--text-dark)] uppercase tracking-wider">NDA Protected</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-24" style="background:var(--cream);">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="cta-strip relative z-10 text-center reveal">
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);">
+                        <i class="fas fa-bolt text-white text-xs"></i>
+                        <span class="text-white text-xs font-bold uppercase tracking-[0.18em]">Get Started Today</span>
+                    </div>
+                    <h2 class="text-white mb-4" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);">Ready to Break<br>Language Barriers?</h2>
+                    <p class="text-white/70 mb-10 max-w-xl mx-auto">Join 5,000+ satisfied clients worldwide. Get a free quote in under 2 hours, with no commitment required.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="contact.html" class="btn btn-lg btn-shine" style="background:white;color:#2563EB;border:1px solid rgba(255,255,255,0.3);border-radius:50px;">
+                            <i class="fas fa-paper-plane text-xs"></i> Get Free Quote
+                        </a>
+                        <a href="pricing.html" class="btn btn-lg" style="border:1.5px solid rgba(255,255,255,0.35);color:white;border-radius:50px;">
+                            View Pricing <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LANGUAGES GRID ===== -->
+    <section class="py-24" style="background:var(--surface-alt);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-globe text-[10px]"></i> Languages</div>
+                <h2 class="section-title reveal">50+ Languages, <span class="blue-text">One Platform</span></h2>
+                <p class="section-subtitle mx-auto reveal">From widely spoken world languages to rare regional dialects — we have certified experts for every pair.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10">
+                <div class="lang-card reveal"><span class="text-2xl">🇪🇸</span><span class="text-xs font-bold">Spanish</span><span class="text-[10px] text-[var(--text-muted)]">Español</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇫🇷</span><span class="text-xs font-bold">French</span><span class="text-[10px] text-[var(--text-muted)]">Français</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇩🇪</span><span class="text-xs font-bold">German</span><span class="text-[10px] text-[var(--text-muted)]">Deutsch</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇨🇳</span><span class="text-xs font-bold">Mandarin</span><span class="text-[10px] text-[var(--text-muted)]">中文</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇯🇵</span><span class="text-xs font-bold">Japanese</span><span class="text-[10px] text-[var(--text-muted)]">日本語</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇸🇦</span><span class="text-xs font-bold">Arabic</span><span class="text-[10px] text-[var(--text-muted)]">العربية</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇰🇷</span><span class="text-xs font-bold">Korean</span><span class="text-[10px] text-[var(--text-muted)]">한국어</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇮🇳</span><span class="text-xs font-bold">Hindi</span><span class="text-[10px] text-[var(--text-muted)]">हिन्दी</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇵🇹</span><span class="text-xs font-bold">Portuguese</span><span class="text-[10px] text-[var(--text-muted)]">Português</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇷🇺</span><span class="text-xs font-bold">Russian</span><span class="text-[10px] text-[var(--text-muted)]">Русский</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇮🇹</span><span class="text-xs font-bold">Italian</span><span class="text-[10px] text-[var(--text-muted)]">Italiano</span></div>
+                <div class="lang-card reveal"><span class="text-2xl">🇳🇱</span><span class="text-xs font-bold">Dutch</span><span class="text-[10px] text-[var(--text-muted)]">Nederlands</span></div>
+            </div>
+            <p class="text-center text-sm text-[var(--text-muted)] reveal">And 38+ more languages including Turkish, Polish, Swedish, Thai, Vietnamese, Hebrew & more. <a href="contact.html" class="text-[#2563EB] font-semibold hover:underline">Don't see yours? Ask us →</a></p>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED TRANSLATORS ===== -->
+    <section class="py-24" style="background:var(--cream);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-14">
+                <div>
+                    <div class="section-tag reveal"><i class="fas fa-user-tie text-[10px]"></i> Our Experts</div>
+                    <h2 class="section-title mt-3 reveal">Meet Our <span class="blue-text">Top Translators</span></h2>
+                </div>
+                <a href="home2.html" class="btn btn-secondary btn-sm reveal shrink-0">View All Translators <i class="fas fa-arrow-right text-xs"></i></a>
+            </div>
+            <div class="grid-3">
+                <div class="testi-card text-center reveal">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden" style="border:3px solid rgba(37,99,235,0.3);box-shadow:0 4px 20px rgba(37,99,235,0.2);">
+                        <img src="assets/translator_elena.png" alt="Elena Martínez" class="w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-base font-bold mb-0.5" style="font-family:'DM Sans',sans-serif;">Elena Martínez</h3>
+                    <p class="text-xs text-[#2563EB] font-bold uppercase tracking-wider mb-3">Lead Spanish Translator</p>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">12+ years in legal and medical translation. Native Spanish with certified proficiency in French and Portuguese.</p>
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="px-2 py-1 rounded-full text-[10px] font-bold" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:#2563EB;">🇪🇸 Spanish</span>
+                        <span class="px-2 py-1 rounded-full text-[10px] font-bold" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:#2563EB;">🇫🇷 French</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-1.5 text-xs text-[var(--text-muted)]"><i class="fas fa-star text-[#F59E0B] text-xs"></i> 4.9 · 2,400+ projects</div>
+                </div>
+                <div class="testi-card text-center reveal">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden" style="border:3px solid rgba(37,99,235,0.3);box-shadow:0 4px 20px rgba(37,99,235,0.2);">
+                        <img src="assets/translator_hiroshi.png" alt="Hiroshi Tanaka" class="w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-base font-bold mb-0.5" style="font-family:'DM Sans',sans-serif;">Hiroshi Tanaka</h3>
+                    <p class="text-xs text-[#2563EB] font-bold uppercase tracking-wider mb-3">Senior Japanese Specialist</p>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">15+ years in technical and IT translations. JLPT N1 certified with extensive patent and software experience.</p>
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="px-2 py-1 rounded-full text-[10px] font-bold" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:#2563EB;">🇯🇵 Japanese</span>
+                        <span class="px-2 py-1 rounded-full text-[10px] font-bold" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:#2563EB;">🇰🇷 Korean</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-1.5 text-xs text-[var(--text-muted)]"><i class="fas fa-star text-[#F59E0B] text-xs"></i> 5.0 · 1,850+ projects</div>
+                </div>
+                <div class="testi-card text-center reveal">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden" style="border:3px solid rgba(37,99,235,0.3);box-shadow:0 4px 20px rgba(37,99,235,0.2);">
+                        <img src="assets/translator_amira.png" alt="Amira Farouk" class="w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-base font-bold mb-0.5" style="font-family:'DM Sans',sans-serif;">Amira Farouk</h3>
+                    <p class="text-xs text-[#2563EB] font-bold uppercase tracking-wider mb-3">Arabic Language Coach</p>
+                    <p class="text-xs text-[var(--text-muted)] mb-4">10+ years in diplomatic and business interpretation. Specializing in Modern Standard Arabic and Gulf dialects.</p>
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="px-2 py-1 rounded-full text-[10px] font-bold" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:#2563EB;">🇸🇦 Arabic</span>
+                        <span class="px-2 py-1 rounded-full text-[10px] font-bold" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:#2563EB;">🇫🇷 French</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-1.5 text-xs text-[var(--text-muted)]"><i class="fas fa-star text-[#F59E0B] text-xs"></i> 4.8 · 1,600+ projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INDUSTRIES WE SERVE ===== -->
+    <section class="py-24" style="background:var(--surface-alt);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-industry text-[10px]"></i> Industries</div>
+                <h2 class="section-title reveal">Serving <span class="blue-text">Every Industry</span></h2>
+                <p class="section-subtitle mx-auto reveal">Our specialists have deep domain expertise — not just language skills — to ensure accurate, contextually correct translations.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-gavel text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Legal</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Contracts, court filings, patents, and compliance documents</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-stethoscope text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Medical</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Clinical trials, patient records, pharmaceutical labels</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-microchip text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Technology</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Software, UI strings, technical manuals, API docs</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-chart-line text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Finance</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Annual reports, investment prospectuses, banking docs</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-graduation-cap text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Education</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Curricula, academic papers, e-learning content</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-shopping-cart text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">E-Commerce</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Product listings, reviews, customer communications</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-plane text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Travel</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Tour content, hospitality materials, travel apps</p>
+                </div>
+                <div class="card p-6 text-center reveal hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.18);"><i class="fas fa-landmark text-[#2563EB]"></i></div>
+                    <h4 class="text-sm font-bold mb-1" style="font-family:'DM Sans',sans-serif;">Government</h4>
+                    <p class="text-xs text-[var(--text-muted)]">Official documents, immigration, public services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
