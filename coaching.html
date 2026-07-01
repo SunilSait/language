@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LinguaBridge Language Coaching and Translation - Professional coaching, certified translators, corporate packages and quick quote.">
+<title>Language Coaching and Translation | LinguaBridge</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Ccircle cx='50' cy='50' r='45' stroke='%232563EB' stroke-width='2' stroke-opacity='0.5' fill='none'/%3E%3Cpath d='M42 35 L42 65 L60 65' stroke='%232563EB' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#2563EB',secondary:'#0F172A'}}}}</script>
+<style>
+.lang-tab{cursor:pointer;padding:10px 22px;border-radius:50px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .25s;border:1.5px solid transparent}
+.lang-tab.active{background:linear-gradient(135deg,#2563EB,#1D4ED8);color:#fff;box-shadow:0 4px 18px rgba(37,99,235,.28)}
+.lang-tab:not(.active){border-color:var(--border-light);color:var(--text-muted)}
+.lang-tab:not(.active):hover{border-color:#2563EB;color:#2563EB}
+.lang-panel{display:none}
+.lang-panel.active{display:flex}
+.cred-card{background:var(--surface);border:1px solid var(--border-light);border-radius:20px;padding:28px;display:flex;gap:18px;align-items:flex-start;transition:all .28s}
+.cred-card:hover{border-color:rgba(37,99,235,.4);box-shadow:0 8px 32px rgba(37,99,235,.08);transform:translateY(-3px)}
+.pkg-badge{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:50px}
+.pkg-badge.popular{background:rgba(37,99,235,.12);color:#2563EB}
+.pkg-badge.enterprise{background:rgba(16,185,129,.12);color:#10B981}
+.track-item{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border-light)}
+.track-item:last-child{border-bottom:none}
+.track-num{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0}
+.proficiency-bar{height:6px;border-radius:50px;background:var(--border-light);overflow:hidden}
+.proficiency-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,#2563EB,#60A5FA)}
+.stat-ticker{text-align:center}
+.stat-ticker .num{font-size:clamp(2rem,4vw,3rem);font-weight:800;background:linear-gradient(135deg,#2563EB,#60A5FA);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-family:'Playfair Display',serif}
+</style>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden" style="background-image: linear-gradient(160deg, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.60) 100%), url('assets/banner_coaching.png'); background-size: cover; background-position: center; min-height: 400px; display:flex; align-items:center;">
+        <div class="absolute inset-0 pointer-events-none" style="background-image:linear-gradient(rgba(37,99,235,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.04) 1px,transparent 1px);background-size:60px 60px;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center py-28 w-full">
+            <div class="section-tag mx-auto" style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.35);color:#93C5FD;"><i class="fas fa-language text-[10px]"></i> Language Coaching &amp; Translation</div>
+            <h1 class="text-white mt-5" style="font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,3.9rem);text-shadow:0 2px 20px rgba(0,0,0,0.4);">Expert Coaching &amp;<br><span class="blue-text">Certified Translation</span></h1>
+            <p class="text-neutral-300 mt-5 max-w-2xl mx-auto text-base leading-relaxed">World-class language coaching sessions, certified document translation, and tailored corporate packages delivered by credentialed linguists across 50+ languages.</p>
+            <div class="flex flex-wrap gap-4 justify-center mt-10">
+                <a href="#quick-quote" class="btn btn-primary btn-lg btn-shine"><i class="fas fa-paper-plane text-xs"></i> Get a Quick Quote</a>
+                <a href="#packages" class="btn btn-lg" style="border:1.5px solid rgba(37,99,235,0.4);color:#60A5FA;">View Packages <i class="fas fa-arrow-down text-xs"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="py-14" style="background:var(--surface); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="stat-ticker reveal"><div class="num">50+</div><div class="text-sm text-[var(--text-muted)] mt-1">Languages Available</div></div>
+                <div class="stat-ticker reveal"><div class="num">120+</div><div class="text-sm text-[var(--text-muted)] mt-1">Certified Translators</div></div>
+                <div class="stat-ticker reveal"><div class="num">98%</div><div class="text-sm text-[var(--text-muted)] mt-1">Client Satisfaction</div></div>
+                <div class="stat-ticker reveal"><div class="num">24h</div><div class="text-sm text-[var(--text-muted)] mt-1">Average Turnaround</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LANGUAGES OFFERED -->
+    <section class="py-24 bg-[#F8FAFC] dark:bg-[#0B1120]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-globe text-[10px]"></i> Languages</div>
+                <h2 class="section-title reveal">Languages We <span class="blue-text">Teach &amp; Translate</span></h2>
+                <p class="section-subtitle mx-auto reveal">From European classics to Asian scripts, our specialists cover every major language family, dialect, and script system.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 mb-12 reveal" id="lang-tabs">
+                <button class="lang-tab active" data-tab="european" onclick="switchTab('european')">European</button>
+                <button class="lang-tab" data-tab="asian" onclick="switchTab('asian')">Asian</button>
+                <button class="lang-tab" data-tab="middle-east" onclick="switchTab('middle-east')">Middle East</button>
+                <button class="lang-tab" data-tab="americas" onclick="switchTab('americas')">Americas</button>
+            </div>
+            <!-- European -->
+            <div class="lang-panel active lang-grid-center" id="tab-european">
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127466;&#127480;</span><div><div class="text-sm font-bold">Spanish</div><div class="text-xs text-[var(--text-muted)]">Latin America &amp; Iberian</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:98%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127467;&#127479;</span><div><div class="text-sm font-bold">French</div><div class="text-xs text-[var(--text-muted)]">Europe &amp; Francophone Africa</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:96%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127465;&#127466;</span><div><div class="text-sm font-bold">German</div><div class="text-xs text-[var(--text-muted)]">Standard &amp; Swiss German</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:94%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127470;&#127481;</span><div><div class="text-sm font-bold">Italian</div><div class="text-xs text-[var(--text-muted)]">Literary &amp; Business</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:92%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127479;&#127482;</span><div><div class="text-sm font-bold">Russian</div><div class="text-xs text-[var(--text-muted)]">Technical &amp; Literary</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:89%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127477;&#127481;</span><div><div class="text-sm font-bold">Portuguese</div><div class="text-xs text-[var(--text-muted)]">Brazil &amp; Portugal</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:91%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127475;&#127473;</span><div><div class="text-sm font-bold">Dutch</div><div class="text-xs text-[var(--text-muted)]">Netherlands &amp; Flemish</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:87%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127477;&#127473;</span><div><div class="text-sm font-bold">Polish</div><div class="text-xs text-[var(--text-muted)]">Legal &amp; Government</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:85%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+            </div>
+            <!-- Asian -->
+            <div class="lang-panel lang-grid-center" id="tab-asian">
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127464;&#127475;</span><div><div class="text-sm font-bold">Mandarin Chinese</div><div class="text-xs text-[var(--text-muted)]">Simplified &amp; Traditional</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:97%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127471;&#127477;</span><div><div class="text-sm font-bold">Japanese</div><div class="text-xs text-[var(--text-muted)]">Business &amp; Technical</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:95%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127472;&#127479;</span><div><div class="text-sm font-bold">Korean</div><div class="text-xs text-[var(--text-muted)]">Tech &amp; Commerce</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:90%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127470;&#127475;</span><div><div class="text-sm font-bold">Hindi</div><div class="text-xs text-[var(--text-muted)]">Devanagari &amp; Business</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:93%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127481;&#127469;</span><div><div class="text-sm font-bold">Thai</div><div class="text-xs text-[var(--text-muted)]">Tourism &amp; Legal</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:82%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127483;&#127475;</span><div><div class="text-sm font-bold">Vietnamese</div><div class="text-xs text-[var(--text-muted)]">Commerce &amp; Immigration</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:80%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127470;&#127465;</span><div><div class="text-sm font-bold">Indonesian</div><div class="text-xs text-[var(--text-muted)]">Business &amp; Media</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:84%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127477;&#127469;</span><div><div class="text-sm font-bold">Filipino / Tagalog</div><div class="text-xs text-[var(--text-muted)]">BPO &amp; Legal</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:86%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+            </div>
+            <!-- Middle East -->
+            <div class="lang-panel lang-grid-center" id="tab-middle-east">
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127480;&#127462;</span><div><div class="text-sm font-bold">Arabic (MSA)</div><div class="text-xs text-[var(--text-muted)]">Modern Standard &amp; Gulf</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:96%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127470;&#127479;</span><div><div class="text-sm font-bold">Farsi / Persian</div><div class="text-xs text-[var(--text-muted)]">Legal &amp; Literary</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:86%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127481;&#127479;</span><div><div class="text-sm font-bold">Turkish</div><div class="text-xs text-[var(--text-muted)]">Business &amp; Government</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:88%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127470;&#127473;</span><div><div class="text-sm font-bold">Hebrew</div><div class="text-xs text-[var(--text-muted)]">Tech &amp; Legal</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:82%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+            </div>
+            <!-- Americas -->
+            <div class="lang-panel lang-grid-center" id="tab-americas">
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127474;&#127485;</span><div><div class="text-sm font-bold">Mexican Spanish</div><div class="text-xs text-[var(--text-muted)]">Regional dialects</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:97%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127463;&#127479;</span><div><div class="text-sm font-bold">Brazilian Portuguese</div><div class="text-xs text-[var(--text-muted)]">Commerce &amp; Media</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:93%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Expert Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127464;&#127462;</span><div><div class="text-sm font-bold">Canadian French</div><div class="text-xs text-[var(--text-muted)]">Quebec &amp; Government</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:88%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Advanced Level</div></div>
+                <div class="card p-5 reveal hover:-translate-y-1 transition-transform"><div class="flex items-center gap-3 mb-3"><span class="text-2xl">&#127477;&#127466;</span><div><div class="text-sm font-bold">Quechua</div><div class="text-xs text-[var(--text-muted)]">Indigenous South America</div></div></div><div class="proficiency-bar"><div class="proficiency-fill" style="width:72%"></div></div><div class="text-xs text-[var(--text-muted)] mt-1">Specialist Level</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSLATOR CREDENTIALS -->
+    <section class="py-24 bg-white dark:bg-[#111827]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-id-badge text-[10px]"></i> Our Team</div>
+                <h2 class="section-title reveal">Meet Our <span class="blue-text">Expert Translators</span></h2>
+                <p class="section-subtitle mx-auto reveal">Every LinguaBridge translator holds a Master's degree in Translation Studies or Linguistics, plus 5+ years of domain-specific experience.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="cred-card reveal">
+                    <div class="w-[58px] h-[58px] rounded-2xl overflow-hidden flex-shrink-0" style="border:2px solid rgba(37,99,235,0.3);"><img src="assets/client_robert.png" alt="Dr. Marcus Adler" class="w-full h-full object-cover object-top"></div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between flex-wrap gap-2 mb-2"><div><div class="font-bold text-sm">Dr. Marcus Adler</div><div class="text-xs text-[var(--text-muted)]">Legal &amp; Financial Translator</div></div><div class="flex gap-2 flex-wrap"><span class="pkg-badge enterprise">ISO 17100</span></div></div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-3">PhD in Comparative Linguistics, University of Edinburgh. 12+ years translating international contracts, patent filings, and prospectuses across German, English, and Dutch.</p>
+                        <div class="flex flex-wrap gap-2"><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">German</span><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">Dutch</span><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">English</span></div>
+                    </div>
+                </div>
+                <div class="cred-card reveal">
+                    <div class="w-[58px] h-[58px] rounded-2xl overflow-hidden flex-shrink-0" style="border:2px solid rgba(37,99,235,0.3);"><img src="assets/client_sarah.png" alt="Prof. Mei-Lin Chen" class="w-full h-full object-cover object-top"></div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between flex-wrap gap-2 mb-2"><div><div class="font-bold text-sm">Prof. Mei-Lin Chen</div><div class="text-xs text-[var(--text-muted)]">Asian Languages Lead Coach</div></div><div class="flex gap-2 flex-wrap"><span class="pkg-badge popular">CIOL Member</span><span class="pkg-badge enterprise">GALA</span></div></div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-3">Professor of Applied Linguistics at Georgetown University. Specializes in Mandarin, Japanese, and Korean. 15+ years coaching corporate executives and academic materials.</p>
+                        <div class="flex flex-wrap gap-2"><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">Mandarin</span><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">Japanese</span></div>
+                    </div>
+                </div>
+                <div class="cred-card reveal">
+                    <div class="w-[58px] h-[58px] rounded-2xl overflow-hidden flex-shrink-0" style="border:2px solid rgba(37,99,235,0.3);"><img src="assets/client_ana.png" alt="Yasmin Al-Rashid" class="w-full h-full object-cover object-top"></div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between flex-wrap gap-2 mb-2"><div><div class="font-bold text-sm">Yasmin Al-Rashid</div><div class="text-xs text-[var(--text-muted)]">Arabic &amp; Middle East Specialist</div></div><div class="flex gap-2 flex-wrap"><span class="pkg-badge popular">ATA Certified</span></div></div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-3">MA in Translation, Al-Azhar University Cairo. Expert in MSA, Gulf Arabic, and Levantine dialects. Worked with the UN and World Bank on Arabic localization projects.</p>
+                        <div class="flex flex-wrap gap-2"><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">Arabic</span><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">English</span><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">French</span></div>
+                    </div>
+                </div>
+                <div class="cred-card reveal">
+                     <div class="w-[58px] h-[58px] rounded-2xl overflow-hidden flex-shrink-0" style="border:2px solid rgba(37,99,235,0.3);"><img src="assets/team_james.png" alt="Carlos Mendez-Rivera" class="w-full h-full object-cover object-top"></div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between flex-wrap gap-2 mb-2"><div><div class="font-bold text-sm">Carlos Mendez-Rivera</div><div class="text-xs text-[var(--text-muted)]">Spanish &amp; Latin American Coach</div></div><div class="flex gap-2 flex-wrap"><span class="pkg-badge enterprise">NAATI</span></div></div>
+                        <p class="text-xs text-[var(--text-muted)] leading-relaxed mb-3">Master's in Hispanic Linguistics, Complutense Madrid. Expert in Latin American regional dialects, legal and immigration translation, and Spanish coaching for executives.</p>
+                        <div class="flex flex-wrap gap-2"><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">Spanish</span><span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:var(--bg-primary);border:1px solid var(--border-light);">Portuguese</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 mt-4 reveal">
+                <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl" style="background:var(--surface);border:1px solid var(--border-light);"><i class="fas fa-award text-[#F59E0B] text-sm"></i><span class="text-xs font-bold text-[var(--text-muted)]">ATA Certified Members</span></div>
+                <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl" style="background:var(--surface);border:1px solid var(--border-light);"><i class="fas fa-certificate text-[#2563EB] text-sm"></i><span class="text-xs font-bold text-[var(--text-muted)]">ISO 17100 Compliant</span></div>
+                <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl" style="background:var(--surface);border:1px solid var(--border-light);"><i class="fas fa-shield-halved text-[#10B981] text-sm"></i><span class="text-xs font-bold text-[var(--text-muted)]">GDPR &amp; NDA Protected</span></div>
+                <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl" style="background:var(--surface);border:1px solid var(--border-light);"><i class="fas fa-globe text-[#8B5CF6] text-sm"></i><span class="text-xs font-bold text-[var(--text-muted)]">GALA Network Members</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COACHING PROGRAMS -->
+    <section class="py-24 bg-[#F8FAFC] dark:bg-[#0B1120]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+                <div class="reveal">
+                    <div class="section-tag mb-5"><i class="fas fa-chalkboard-teacher text-[10px]"></i> Coaching Programs</div>
+                    <h2 class="section-title mb-4">Structured <span class="blue-text">Learning Tracks</span></h2>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed mb-8">Our language coaching follows a proven 4-phase immersion framework trusted by Fortune 500 companies and individual learners alike.</p>
+                    <div class="track-item"><div class="track-num" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));color:#2563EB;border:1px solid rgba(37,99,235,0.2);">01</div><div><div class="text-sm font-bold mb-1">Needs Assessment &amp; Baseline Test</div><p class="text-xs text-[var(--text-muted)] leading-relaxed">A 30-minute diagnostic session to gauge current proficiency, learning goals, and preferred communication style.</p></div></div>
+                    <div class="track-item"><div class="track-num" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));color:#2563EB;border:1px solid rgba(37,99,235,0.2);">02</div><div><div class="text-sm font-bold mb-1">Personalised Curriculum Design</div><p class="text-xs text-[var(--text-muted)] leading-relaxed">Coaches build a custom syllabus covering industry vocabulary, grammar modules, pronunciation labs, and cultural etiquette guides.</p></div></div>
+                    <div class="track-item"><div class="track-num" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));color:#2563EB;border:1px solid rgba(37,99,235,0.2);">03</div><div><div class="text-sm font-bold mb-1">Live Sessions + Immersion Exercises</div><p class="text-xs text-[var(--text-muted)] leading-relaxed">Weekly 1-on-1 or group sessions via video, supported by real-world listening exercises, role-play simulations, and writing tasks.</p></div></div>
+                    <div class="track-item"><div class="track-num" style="background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));color:#2563EB;border:1px solid rgba(37,99,235,0.2);">04</div><div><div class="text-sm font-bold mb-1">Progress Review &amp; Certification</div><p class="text-xs text-[var(--text-muted)] leading-relaxed">Monthly milestone assessments lead to a LinguaBridge Proficiency Certificate upon program completion.</p></div></div>
+                </div>
+                <div class="reveal">
+                    <div class="card p-8 mb-6">
+                        <h3 class="text-base font-bold mb-5" style="font-family:'Playfair Display',serif;">Why Our Coaching Works</h3>
+                        <div class="space-y-5">
+                            <div class="flex gap-4 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.2);"><i class="fas fa-user-tie text-[#2563EB] text-sm"></i></div><div><div class="text-sm font-bold mb-0.5">Native-Speaker Coaches Only</div><p class="text-xs text-[var(--text-muted)]">Every coach is a native speaker of the target language with academic or professional credentials.</p></div></div>
+                            <div class="flex gap-4 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.2);"><i class="fas fa-calendar-check text-[#2563EB] text-sm"></i></div><div><div class="text-sm font-bold mb-0.5">Flexible Scheduling</div><p class="text-xs text-[var(--text-muted)]">Book sessions in 30, 60, or 90 minute blocks - 7 days a week across every time zone.</p></div></div>
+                            <div class="flex gap-4 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.2);"><i class="fas fa-chart-bar text-[#2563EB] text-sm"></i></div><div><div class="text-sm font-bold mb-0.5">Progress Dashboard</div><p class="text-xs text-[var(--text-muted)]">Real-time analytics track vocabulary growth, session attendance, and skill development week over week.</p></div></div>
+                            <div class="flex gap-4 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.2);"><i class="fas fa-video text-[#2563EB] text-sm"></i></div><div><div class="text-sm font-bold mb-0.5">Session Recordings</div><p class="text-xs text-[var(--text-muted)]">All sessions are recorded and accessible in your learning portal for unlimited review.</p></div></div>
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-2xl flex items-center gap-4" style="background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(37,99,235,0.02));border:1px solid rgba(37,99,235,0.18);">
+                        <i class="fas fa-trophy text-[#F59E0B] text-3xl"></i>
+                        <div><div class="text-sm font-bold mb-0.5">LinguaBridge Certificate of Proficiency</div><p class="text-xs text-[var(--text-muted)]">Recognised by 200+ corporate partners. Earners receive a digital badge shareable on LinkedIn.</p></div>
+                    </div>
+
+                    <!-- Free Trial Callout Card -->
+                    <div class="p-6 rounded-2xl mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between" style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.18);">
+                        <div class="text-left">
+                            <div class="text-sm font-bold mb-1"><i class="fas fa-gift text-[#10B981] mr-1.5"></i> Try Before You Commit</div>
+                            <p class="text-xs text-[var(--text-muted)] leading-relaxed">Free 15-minute 1-on-1 trial session with a certified native coach. No card required.</p>
+                        </div>
+                        <a href="contact.html" class="btn btn-primary btn-sm shrink-0 whitespace-nowrap">Book Free Trial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORPORATE PACKAGES -->
+    <section class="py-24 bg-white dark:bg-[#111827]" id="packages">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14">
+                <div class="section-tag mx-auto reveal"><i class="fas fa-building text-[10px]"></i> Corporate Packages</div>
+                <h2 class="section-title reveal">Translation <span class="blue-text">Packages</span></h2>
+                <p class="section-subtitle mx-auto reveal">Predictable monthly retainer options designed to scale with your organisation, with no per-word surprises.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card overflow-hidden reveal" style="border-top:3px solid rgba(37,99,235,0.3);">
+                    <div class="p-8">
+                        <div class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-4">Starter</div>
+                        <div class="mb-1"><span style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;" class="text-[var(--text-dark)]">$299</span><span class="text-sm text-[var(--text-muted)]">/mo</span></div>
+                        <p class="text-xs text-[var(--text-muted)] mb-6">For small teams and freelancers needing regular translation support.</p>
+                        <ul class="space-y-3 mb-8 text-sm">
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Up to 10,000 words/month</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>2 language pairs</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>72-hour standard turnaround</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>1 revision round included</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)] opacity-40"><i class="fas fa-times text-xs shrink-0"></i>Priority queue</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)] opacity-40"><i class="fas fa-times text-xs shrink-0"></i>Dedicated account manager</li>
+                        </ul>
+                        <a href="#quick-quote" class="btn btn-secondary btn-full">Get Started</a>
+                    </div>
+                </div>
+                <div class="card overflow-hidden reveal" style="border-top:3px solid #2563EB; position:relative;">
+                    <div class="absolute top-4 right-4"><span class="pkg-badge popular">Most Popular</span></div>
+                    <div class="p-8">
+                        <div class="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-4">Professional</div>
+                        <div class="mb-1"><span style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;" class="text-[var(--text-dark)]">$699</span><span class="text-sm text-[var(--text-muted)]">/mo</span></div>
+                        <p class="text-xs text-[var(--text-muted)] mb-6">For growing companies requiring consistent, high-volume translation.</p>
+                        <ul class="space-y-3 mb-8 text-sm">
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Up to 30,000 words/month</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Up to 6 language pairs</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>24-hour priority turnaround</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>3 revision rounds</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Priority processing queue</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)] opacity-40"><i class="fas fa-times text-xs shrink-0"></i>Dedicated account manager</li>
+                        </ul>
+                        <a href="#quick-quote" class="btn btn-primary btn-full">Get Started</a>
+                    </div>
+                </div>
+                <div class="card overflow-hidden reveal" style="border-top:3px solid #10B981;">
+                    <div class="p-8">
+                        <div class="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-4">Enterprise</div>
+                        <div class="mb-1"><span style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;" class="text-[var(--text-dark)]">Custom</span></div>
+                        <p class="text-xs text-[var(--text-muted)] mb-6">For large organisations with ongoing multilingual operations at scale.</p>
+                        <ul class="space-y-3 mb-8 text-sm">
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Unlimited word volume</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>All 50+ languages</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>4-hour express turnaround</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Unlimited revisions</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Priority processing queue</li>
+                            <li class="flex items-center gap-2 text-[var(--text-muted)]"><i class="fas fa-check text-[#10B981] text-xs shrink-0"></i>Dedicated account manager</li>
+                        </ul>
+                        <a href="#quick-quote" class="btn btn-secondary btn-full">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK QUOTE FORM -->
+    <section class="py-24 relative overflow-hidden" id="quick-quote" style="background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute w-[500px] h-[500px] rounded-full" style="background:radial-gradient(circle,rgba(37,99,235,0.10) 0%,transparent 70%);top:-200px;right:-200px;"></div>
+            <div class="absolute w-[400px] h-[400px] rounded-full" style="background:radial-gradient(circle,rgba(37,99,235,0.06) 0%,transparent 70%);bottom:-150px;left:-100px;"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <div class="section-tag mx-auto" style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.35);color:#93C5FD;"><i class="fas fa-bolt text-[10px]"></i> Quick Quote</div>
+                <h2 class="text-white mt-4" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);">Request a <span class="blue-text">Quote in 60 Seconds</span></h2>
+                <p class="text-neutral-400 mt-3 max-w-xl mx-auto">Fill in your project details. A specialist will respond with a tailored quote and timeline within 2 hours.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+                <div class="lg:col-span-3 reveal">
+                    <div style="background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(37,99,235,0.02));border:1px solid rgba(37,99,235,0.18);border-radius:20px;padding:32px;">
+                        <form id="coaching-quote-form" class="space-y-5" onsubmit="handleCoachingQuote(event)">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="form-group"><label class="form-label" for="cq-name">Full Name *</label><input type="text" id="cq-name" class="form-input" placeholder="Your full name" required></div>
+                                <div class="form-group"><label class="form-label" for="cq-email">Work Email *</label><input type="email" id="cq-email" class="form-input" placeholder="you@company.com" required></div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="form-group"><label class="form-label" for="cq-service">Service Required *</label><select id="cq-service" class="form-input" required><option value="">Select service</option><option>Document Translation</option><option>Language Coaching - Individual</option><option>Language Coaching - Corporate</option><option>Live Interpretation</option><option>Corporate Training Program</option><option>Website Localisation</option><option>Certified Translation (Legal)</option></select></div>
+                                <div class="form-group"><label class="form-label" for="cq-lang">Language Pair *</label><select id="cq-lang" class="form-input" required><option value="">Select pair</option><option>English to Spanish</option><option>English to French</option><option>English to Mandarin</option><option>English to German</option><option>English to Arabic</option><option>English to Japanese</option><option>English to Portuguese</option><option>Other (specify below)</option></select></div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="form-group"><label class="form-label" for="cq-words">Word Count / Hours</label><input type="text" id="cq-words" class="form-input" placeholder="e.g. 5,000 words or 10 hrs"></div>
+                                <div class="form-group"><label class="form-label" for="cq-deadline">Deadline</label><input type="date" id="cq-deadline" class="form-input"></div>
+                            </div>
+                            <div class="form-group"><label class="form-label" for="cq-details">Project Details</label><textarea id="cq-details" class="form-input" rows="4" placeholder="Describe your project, document type, subject matter, special requirements..."></textarea></div>
+                            <button type="submit" class="btn btn-primary btn-full btn-lg btn-shine"><i class="fas fa-paper-plane text-xs"></i> Send Quote Request</button>
+                        </form>
+                        <div id="coaching-quote-success" class="hidden text-center py-10">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);"><i class="fas fa-check text-[#10B981] text-2xl"></i></div>
+                            <h3 class="text-white text-xl font-bold mb-3" style="font-family:'Playfair Display',serif;">Request Received!</h3>
+                            <p class="text-neutral-400 text-sm">A language specialist will respond with a custom quote within <strong class="text-white">2 business hours</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 reveal space-y-5">
+                    <div class="p-6 rounded-2xl" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);">
+                        <div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.12);"><i class="fas fa-clock text-[#2563EB]"></i></div><span class="text-sm font-bold text-white">2-Hour Response Guarantee</span></div>
+                        <p class="text-xs text-neutral-400 leading-relaxed">Our team monitors submissions in real-time. You will receive a detailed quote with pricing, timeline, and assigned translator profile within 2 hours on business days.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.12);"><i class="fas fa-phone text-[#2563EB]"></i></div><span class="text-sm font-bold text-white">Prefer to Call?</span></div>
+                        <a href="tel:+15557248190" class="text-[#60A5FA] text-sm font-bold hover:underline">+1 (555) 724-8190</a>
+                    </div>
+                    <div class="p-6 rounded-2xl" style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(37,99,235,0.12);"><i class="fas fa-envelope text-[#2563EB]"></i></div><span class="text-sm font-bold text-white">Send an Email</span></div>
+                        <a href="mailto:quotes@linguabridge.co" class="text-[#60A5FA] text-sm font-bold hover:underline">quotes@linguabridge.co</a>
+                    </div>
+                    <div class="p-5 rounded-2xl flex items-center gap-3" style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);">
+                        <i class="fas fa-shield-halved text-[#10B981]"></i>
+                        <span class="text-xs text-neutral-400">All project details are covered by a strict NDA and are <strong class="text-white">never shared</strong> with third parties.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section class="py-16 bg-[#F8FAFC] dark:bg-[#0B1120]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="section-title reveal">Not Sure Where to <span class="blue-text">Start?</span></h2>
+            <p class="section-subtitle mx-auto reveal mb-8">Book a free 15-minute consultation with one of our language specialists to discuss your project and get personalised recommendations.</p>
+            <div class="flex flex-wrap justify-center gap-4 reveal">
+                <a href="contact.html" class="btn btn-primary btn-lg btn-shine"><i class="fas fa-calendar text-xs"></i> Book Free Consultation</a>
+                <a href="services.html" class="btn btn-lg" style="border:1.5px solid var(--border-light);color:var(--text-muted);">View All Services <i class="fas fa-arrow-right text-xs"></i></a>
+            </div>
+        </div>
+    </section>
+<div id="footer-container"></div>
+<script src="components.js"></script>
+<script src="script.js"></script>
+<script>
+function switchTab(t){document.querySelectorAll('.lang-tab').forEach(function(x){x.classList.remove('active')});document.querySelector('[data-tab="'+t+'"]').classList.add('active');document.querySelectorAll('.lang-panel').forEach(function(p){p.classList.remove('active')});document.getElementById('tab-'+t).classList.add('active')}
+function handleCoachingQuote(e){e.preventDefault();document.getElementById('coaching-quote-form').classList.add('hidden');document.getElementById('coaching-quote-success').classList.remove('hidden')}
+</script>
+</body>
+</html>

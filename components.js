@@ -18,6 +18,7 @@
         { label: 'Home 2', href: 'home2.html' },
         { label: 'About', href: 'about.html' },
         { label: 'Services', href: 'services.html' },
+        { label: 'Coaching', href: 'coaching.html' },
         { label: 'Pricing', href: 'pricing.html' },
         { label: 'Contact', href: 'contact.html' }
     ];
@@ -102,11 +103,6 @@
                             <i class="fas fa-moon text-sm"></i>
                         </button>
 
-                        <!-- Primary CTA -->
-                        <a href="contact.html" class="hidden xl:inline-flex items-center gap-2 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white px-5 py-2.5 rounded-full text-[12px] font-bold uppercase tracking-widest hover:from-[#3B82F6] hover:to-[#2563EB] transition-all whitespace-nowrap shadow-md shadow-blue-500/20">
-                            Get a Quote
-                        </a>
-
                         <!-- Secondary CTA -->
                         <a href="signup.html" class="hidden xl:inline-flex items-center gap-2 border border-[#2563EB] text-[#2563EB] px-5 py-2.5 rounded-full text-[12px] font-bold uppercase tracking-widest hover:bg-[#2563EB] hover:text-white transition-all whitespace-nowrap">
                             Sign Up
@@ -138,7 +134,6 @@
                             </button>
                         </div>
                         <div class="flex gap-2 w-full sm:w-auto">
-                            <a href="contact.html" class="flex-1 sm:flex-none text-center bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white px-5 py-3 rounded-full font-bold uppercase tracking-widest text-xs shadow-md">Get a Quote</a>
                             <a href="signup.html" class="flex-1 sm:flex-none text-center border border-[#2563EB] text-[#2563EB] px-5 py-3 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#2563EB] hover:text-white transition-all">Sign Up</a>
                         </div>
                     </div>

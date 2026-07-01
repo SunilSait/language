@@ -144,12 +144,10 @@ input, textarea, select, button {
 
 /* ---- Blue Text Effect ---- */
 .blue-text {
-    background: linear-gradient(135deg, #2563EB 0%, #60A5FA 40%, #2563EB 60%, #1D4ED8 100%);
-    background-size: 200% auto;
+    background: linear-gradient(135deg, #2563EB 0%, #60A5FA 50%, #1D4ED8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: blueShimmer 4s linear infinite;
 }
 
 /* ---- Buttons ---- */
@@ -1130,4 +1128,26 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 .dark .trust-item {
     background: var(--surface-alt);
     border-color: rgba(255,255,255,0.06);
+}
+
+/* ---- Centered Responsive Grid Utility ---- */
+.lang-grid-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+.lang-grid-center > .card {
+    width: calc(50% - 8px);
+    min-width: 240px;
+}
+@media (min-width: 640px) {
+    .lang-grid-center > .card {
+        width: calc(33.33% - 11px);
+    }
+}
+@media (min-width: 1024px) {
+    .lang-grid-center > .card {
+        width: calc(25% - 12px);
+    }
 }
