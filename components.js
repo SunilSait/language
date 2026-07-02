@@ -174,6 +174,7 @@
                             <li><a href="index.html" class="footer-link">Home</a></li>
                             <li><a href="home2.html" class="footer-link">Home 2 — Premium</a></li>
                             <li><a href="services.html" class="footer-link">Services</a></li>
+                            <li><a href="coaching.html" class="footer-link">Coaching</a></li>
                             <li><a href="pricing.html" class="footer-link">Pricing</a></li>
                             <li><a href="about.html" class="footer-link">About Us</a></li>
                         </ul>
