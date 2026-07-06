@@ -206,7 +206,7 @@
                 </iframe>
 
                 <!-- Overlay card: HQ -->
-                <div class="absolute top-5 left-5 z-10 rounded-2xl p-5 max-w-[240px]" style="background:rgba(15,23,42,0.92);border:1px solid rgba(37,99,235,0.3);backdrop-filter:blur(10px);">
+                <div class="hidden sm:block absolute top-5 left-5 z-10 rounded-2xl p-5 max-w-[240px]" style="background:rgba(15,23,42,0.92);border:1px solid rgba(37,99,235,0.3);backdrop-filter:blur(10px);">
                     <div class="flex items-center gap-2 mb-3">
                         <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.3);">
                             <i class="fas fa-building text-[#60A5FA] text-xs"></i>
@@ -231,17 +231,17 @@
 
                 <!-- Overlay: Office switcher -->
                 <div class="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex gap-2 flex-wrap justify-center">
-                    <button onclick="switchMap('london')" id="btn-london" class="map-btn map-btn-active px-4 py-2 rounded-full text-xs font-bold transition-all">
-                        🇬🇧 London HQ
+                    <button onclick="switchMap('london')" id="btn-london" class="map-btn map-btn-active px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5">
+                        <img src="https://flagcdn.com/gb.svg" alt="UK" class="w-4 h-3 object-cover rounded-xs"> London HQ
                     </button>
-                    <button onclick="switchMap('newyork')" id="btn-newyork" class="map-btn px-4 py-2 rounded-full text-xs font-bold transition-all">
-                        🇺🇸 New York
+                    <button onclick="switchMap('newyork')" id="btn-newyork" class="map-btn px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5">
+                        <img src="https://flagcdn.com/us.svg" alt="US" class="w-4 h-3 object-cover rounded-xs"> New York
                     </button>
-                    <button onclick="switchMap('dubai')" id="btn-dubai" class="map-btn px-4 py-2 rounded-full text-xs font-bold transition-all">
-                        🇦🇪 Dubai
+                    <button onclick="switchMap('dubai')" id="btn-dubai" class="map-btn px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5">
+                        <img src="https://flagcdn.com/ae.svg" alt="UAE" class="w-4 h-3 object-cover rounded-xs"> Dubai
                     </button>
-                    <button onclick="switchMap('singapore')" id="btn-singapore" class="map-btn px-4 py-2 rounded-full text-xs font-bold transition-all">
-                        🇸🇬 Singapore
+                    <button onclick="switchMap('singapore')" id="btn-singapore" class="map-btn px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5">
+                        <img src="https://flagcdn.com/sg.svg" alt="Singapore" class="w-4 h-3 object-cover rounded-xs"> Singapore
                     </button>
                 </div>
 
@@ -260,22 +260,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="rounded-2xl p-5 reveal" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="text-xl mb-2">🇬🇧</div>
+                    <img src="https://flagcdn.com/gb.svg" alt="UK" class="w-8 h-6 object-cover rounded shadow-sm mb-3">
                     <h4 class="text-sm font-bold text-white mb-1">London HQ</h4>
                     <p class="text-xs text-neutral-400">12 King's Cross Road<br>WC1X 9DS</p>
                 </div>
                 <div class="rounded-2xl p-5 reveal" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="text-xl mb-2">🇺🇸</div>
+                    <img src="https://flagcdn.com/us.svg" alt="US" class="w-8 h-6 object-cover rounded shadow-sm mb-3">
                     <h4 class="text-sm font-bold text-white mb-1">New York</h4>
                     <p class="text-xs text-neutral-400">350 Fifth Avenue<br>NY 10118</p>
                 </div>
                 <div class="rounded-2xl p-5 reveal" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="text-xl mb-2">🇦🇪</div>
+                    <img src="https://flagcdn.com/ae.svg" alt="UAE" class="w-8 h-6 object-cover rounded shadow-sm mb-3">
                     <h4 class="text-sm font-bold text-white mb-1">Dubai</h4>
                     <p class="text-xs text-neutral-400">DIFC Gate Building<br>Dubai, UAE</p>
                 </div>
                 <div class="rounded-2xl p-5 reveal" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="text-xl mb-2">🇸🇬</div>
+                    <img src="https://flagcdn.com/sg.svg" alt="Singapore" class="w-8 h-6 object-cover rounded shadow-sm mb-3">
                     <h4 class="text-sm font-bold text-white mb-1">Singapore</h4>
                     <p class="text-xs text-neutral-400">1 Raffles Place<br>Singapore 048616</p>
                 </div>
